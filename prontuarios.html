@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prontuário - Formulário</title>
+    {% load bootstrap5 %}  <!-- Carrega as tags do Bootstrap -->
+    {% bootstrap_css %}  <!-- Adiciona o CSS do Bootstrap -->
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Guia S.C.F.V.</h1>
+        <!-- Navegação por abas -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="prontuario-tab" data-bs-toggle="tab" data-bs-target="#prontuario" type="button" role="tab" aria-controls="prontuario" aria-selected="true">IDENTIFICAÇÂO</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" name="formulario2-tab" data-bs-toggle="tab" data-bs-target="#formulario2" type="button" role="tab" aria-controls="formulario2" aria-selected="false">FORMAS DE ACESSO</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" name="formulario3-tab" data-bs-toggle="tab" data-bs-target="#formulario3" type="button" role="tab" aria-controls="formulario3" aria-selected="false">PERFIL ETÁRIO</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" name="formulario4-tab" data-bs-toggle="tab" data-bs-target="#formulario4" type="button" role="tab" aria-controls="formulario4" aria-selected="false">SERVIÇOS DE REFERENCIA</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" name="formulario5-tab" data-bs-toggle="tab" data-bs-target="#formulario5" type="button" role="tab" aria-controls="formulario5" aria-selected="false">COMPOSIÇÃO FAMILIAR</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" name="formulario6-tab" data-bs-toggle="tab" data-bs-target="#formulario6" type="button" role="tab" aria-controls="formulario6" aria-selected="false">VULNERABILIDADE</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" name="formulario7-tab" data-bs-toggle="tab" data-bs-target="#formulario7" type="button" role="tab" aria-controls="formulario7" aria-selected="false">CONVIVENCIA FAMILIAR E COMUNITÁRIA</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" name="formulario8-tab" data-bs-toggle="tab" data-bs-target="#formulario8" type="button" role="tab" aria-controls="formulario8" aria-selected="false">PERFIL ETÁRIO</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" name="formulario9-tab" data-bs-toggle="tab" data-bs-target="#formulario9" type="button" role="tab" aria-controls="formulario9" aria-selected="false">OUTRAS OBSERVAÇÕES</button>
+            </li>
+        </ul>
+        
+        <!-- Conteúdo das abas -->
+        <div class="tab-content" id="myTabContent">
+            <!-- Aba Prontuário -->
+            <div class="tab-pane fade show active" id="prontuario" role="tabpanel" aria-labelledby="prontuario-tab">
+                <div class="container mt-4">
+                    <!-- <h2>Preenchimento de Prontuário</h2> -->
+                    <form action="/prontuarios_view/" method="post"> {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" name="nome" placeholder="Digite o nome do paciente" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="data-nascimento" class="form-label">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="data-nascimento" required>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="sexo" class="form-label">Sexo</label>
+                            <select class="form-select" id="sexo" required>
+                                <option value="">Selecione o sexo</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="tel" class="form-control" id="telefone" placeholder="Digite o telefone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="endereco" class="form-label">Endereço</label>
+                            <input type="text" class="form-control" id="endereco" placeholder="Digite o endereço" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nis" class="form-label">NIS</label>
+                            <input type="tel" class="form-control" id="nis" placeholder="Digite o nis" required>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="observacoes" class="form-label">Observações</label>
+                            <textarea class="form-control" id="observacoes" rows="3" placeholder="Digite observações aqui"></textarea>
+                        </div> -->
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <a href="{% url 'home' %}" class="btn btn-secondary">Voltar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Aba Formulário 2 -->
+            <div class="tab-pane fade" id="formulario2" role="tabpanel" aria-labelledby="formulario2-tab">
+                <div class="container mt-4">
+                    <!-- <h2>Formulário 2</h2> -->
+                    <!-- Adicione o conteúdo do formulário 2 aqui -->
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Busca Ativa</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Demanda Espontânea</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Encaminhamentos (Redes socioassistencial)</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Busca Ativa</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Encaminhamento de outras politicas publicas</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Aba Formulário 3 -->
+            <div class="tab-pane fade" id="formulario3" role="tabpanel" aria-labelledby="formulario3-tab">
+                <div class="container mt-4">
+                    <!-- <h2>Formulário 3</h2> -->
+                    <!-- Adicione o conteúdo do formulário 3 aqui -->
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Pessoas de 0 a 6 anos</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Pessoas de 7 a 14 anos</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Pessoas de 15 a 17 anos</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Pessoas de 18 a 29 anos</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Pessoas de 30 a 59 anos</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Pessoas Acima de 60 anos</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba Formulário 4 -->
+            <div class="tab-pane fade" id="formulario4" role="tabpanel" aria-labelledby="formulario4-tab">
+                <div class="container mt-4">
+                    <!-- <h2>Formulário 3</h2> -->
+                    <!-- Adicione o conteúdo do formulário 3 aqui -->
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Renascer - Idoso - Centro</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Girassol - Idosos - CRAS</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Girassol da Lagoa - Idosos - Broa</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Amizade - Idosos - Campos Eliseos</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Amizade - Idosos - Patrimônio</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Espaço Amigo Patrimônio - 06 anos à 11 anos 11 meses e 29 dias</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Adolescer - 06 anos à 15 anos</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Adolescer - 15 anos à 17 anos</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Adolescer - Patrimônio - 15 à 17 anos</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba Formulário 5 -->
+            <div class="tab-pane fade" id="formulario5" role="tabpanel" aria-labelledby="formulario4-tab">
+                <div class="container mt-5">
+                    <!-- <h2>Formulário 3</h2> -->
+                    <!-- Adicione o conteúdo do formulário 3 aqui -->
+                    <div class="container">
+                        <div class="row mb-3">
+                          <div class="col-md-4 col-12">
+                            <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo">
+                          </div>
+                          <div class="col-auto">
+                            <label class="form-label">Sexo</label>
+                            <div class="d-flex align-items-center">
+                              <div class="form-check me-2">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="M">
+                                <label class="form-check-label" for="sexoM">M</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="F">
+                                <label class="form-check-label" for="sexoF">F</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-auto">
+                            <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="dataNascimento">
+                          </div>
+                          <div class="col-auto">
+                            <label for="idade" class="form-label">Idade</label>
+                            <input type="text" class="form-control" id="idade" placeholder="Idade" maxlength="2" style="width: 50px;">
+                          </div>
+                          <div class="col-auto">
+                            <label for="parentesco" class="form-label">Parentesco c/ Pessoa de Referência</label>
+                            <input type="text" class="form-control" id="parentesco" placeholder="Parentesco">
+                          </div>
+                          <div class="col-auto d-flex align-items-center">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="deficiencia">
+                              <label class="form-check-label" for="deficiencia">Pessoa com deficiência</label>
+                            </div>
+                          </div>
+                        </div>
+                    </div>    
+
+                    <div class="container">
+                        <div class="row mb-3">
+                          <div class="col-md-4 col-12">
+                            <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo">
+                          </div>
+                          <div class="col-auto">
+                            <label class="form-label">Sexo</label>
+                            <div class="d-flex align-items-center">
+                              <div class="form-check me-2">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="M">
+                                <label class="form-check-label" for="sexoM">M</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="F">
+                                <label class="form-check-label" for="sexoF">F</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-auto">
+                            <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="dataNascimento">
+                          </div>
+                          <div class="col-auto">
+                            <label for="idade" class="form-label">Idade</label>
+                            <input type="text" class="form-control" id="idade" placeholder="Idade" maxlength="2" style="width: 50px;">
+                          </div>
+                          <div class="col-auto">
+                            <label for="parentesco" class="form-label">Parentesco c/ Pessoa de Referência</label>
+                            <input type="text" class="form-control" id="parentesco" placeholder="Parentesco">
+                          </div>
+                          <div class="col-auto d-flex align-items-center">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="deficiencia">
+                              <label class="form-check-label" for="deficiencia">Pessoa com deficiência</label>
+                            </div>
+                          </div>
+                        </div>
+                    </div>    
+
+                    <div class="container">
+                        <div class="row mb-3">
+                          <div class="col-md-4 col-12">
+                            <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo">
+                          </div>
+                          <div class="col-auto">
+                            <label class="form-label">Sexo</label>
+                            <div class="d-flex align-items-center">
+                              <div class="form-check me-2">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="M">
+                                <label class="form-check-label" for="sexoM">M</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="F">
+                                <label class="form-check-label" for="sexoF">F</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-auto">
+                            <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="dataNascimento">
+                          </div>
+                          <div class="col-auto">
+                            <label for="idade" class="form-label">Idade</label>
+                            <input type="text" class="form-control" id="idade" placeholder="Idade" maxlength="2" style="width: 50px;">
+                          </div>
+                          <div class="col-auto">
+                            <label for="parentesco" class="form-label">Parentesco c/ Pessoa de Referência</label>
+                            <input type="text" class="form-control" id="parentesco" placeholder="Parentesco">
+                          </div>
+                          <div class="col-auto d-flex align-items-center">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="deficiencia">
+                              <label class="form-check-label" for="deficiencia">Pessoa com deficiência</label>
+                            </div>
+                          </div>
+                        </div>
+                    </div>    
+
+                    <div class="container">
+                        <div class="row mb-3">
+                          <div class="col-md-4 col-12">
+                            <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo">
+                          </div>
+                          <div class="col-auto">
+                            <label class="form-label">Sexo</label>
+                            <div class="d-flex align-items-center">
+                              <div class="form-check me-2">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="M">
+                                <label class="form-check-label" for="sexoM">M</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="F">
+                                <label class="form-check-label" for="sexoF">F</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-auto">
+                            <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="dataNascimento">
+                          </div>
+                          <div class="col-auto">
+                            <label for="idade" class="form-label">Idade</label>
+                            <input type="text" class="form-control" id="idade" placeholder="Idade" maxlength="2" style="width: 50px;">
+                          </div>
+                          <div class="col-auto">
+                            <label for="parentesco" class="form-label">Parentesco c/ Pessoa de Referência</label>
+                            <input type="text" class="form-control" id="parentesco" placeholder="Parentesco">
+                          </div>
+                          <div class="col-auto d-flex align-items-center">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="deficiencia">
+                              <label class="form-check-label" for="deficiencia">Pessoa com deficiência</label>
+                            </div>
+                          </div>
+                        </div>
+                    </div>    
+
+                    <div class="container">
+                        <div class="row mb-3">
+                          <div class="col-md-4 col-12">
+                            <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome Completo">
+                          </div>
+                          <div class="col-auto">
+                            <label class="form-label">Sexo</label>
+                            <div class="d-flex align-items-center">
+                              <div class="form-check me-2">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="M">
+                                <label class="form-check-label" for="sexoM">M</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="F">
+                                <label class="form-check-label" for="sexoF">F</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-auto">
+                            <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="dataNascimento">
+                          </div>
+                          <div class="col-auto">
+                            <label for="idade" class="form-label">Idade</label>
+                            <input type="text" class="form-control" id="idade" placeholder="Idade" maxlength="2" style="width: 50px;">
+                          </div>
+                          <div class="col-auto">
+                            <label for="parentesco" class="form-label">Parentesco c/ Pessoa de Referência</label>
+                            <input type="text" class="form-control" id="parentesco" placeholder="Parentesco">
+                          </div>
+                          <div class="col-auto d-flex align-items-center">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="deficiencia">
+                              <label class="form-check-label" for="deficiencia">Pessoa com deficiência</label>
+                            </div>
+                          </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+
+            <!-- Aba Formulário 6 -->
+            <div class="tab-pane fade" id="formulario6" role="tabpanel" aria-labelledby="formulario6-tab">
+                <div class="container mt-5">
+
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Não esta em condições prioritária</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Em situação de isolamento</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Vivencia de violencia e/ou negligencia</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Fora da escola ou com defasagem escolar superior à 2 anos</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Em situação de acolhimento</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Em cumprimento de medida socioeducativas</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Situação de abuso e/ou exploração sexual</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Com medidas e proteção de estatuto da criaça e do Adolescente - ECA</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Criaças e adolescente em situação de rua</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="observacoes" class="form-label">Outros</label>
+                        <textarea class="form-control" id="observacoes" rows="3" placeholder="Digite observações aqui"></textarea>
+                    </div>
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% bootstrap_javascript %}  <!-- Adiciona o JavaScript do Bootstrap -->
+</body>
+</html>
