@@ -22,7 +22,7 @@
         
         .sidebar .nav-link {
             color: #ffffff;
-            font-size: 16px;
+            font-size: 1em;  /* Tamanho base */
         }
         
         .sidebar .nav-link:hover {
@@ -61,35 +61,66 @@
             color: white;
             border: none;
         }
+
+        /* Tamanho inicial do texto aplicável */
+        .texto-ajustavel {
+            font-size: 1em;  /* Tamanho inicial */
+        }
     </style>
 </head>
 <body>
 
     <!-- Barra lateral esquerda -->
-    <div class="sidebar d-flex flex-column">
+    <div class="sidebar d-flex flex-column texto-ajustavel">
         <a href="{% url 'prontuarios_view' %}" class="nav-link">Matricula</a>
-        <a href="#" class="nav-link">Planejamento</a>
+        <a href="{% url 'planejamento' %}" class="nav-link">Planejamento</a>
         <a href="#" class="nav-link">Cronograma</a>
         <a href="#" class="nav-link">Oficinas</a>
         <a href="#" class="nav-link">Cursos</a>
     </div>
 
     <!-- Barra superior -->
-    <div class="topbar">
+    <div class="topbar texto-ajustavel">
         <div>
             <span>Adolescer</span>
         </div>
         <div class="d-flex align-items-center">
             <span class="me-3">{{ user.username }}</span>
+            <button class="btn btn-secondary me-2" onclick="aumentarTexto()">A+</button>
+            <button class="btn btn-secondary me-3" onclick="diminuirTexto()">A-</button>
             <button class="btn btn-logout">Sair</button>
         </div>
     </div>
 
     <!-- Conteúdo principal -->
-    <div class="content">
+    <div class="content texto-ajustavel">
        
     </div>
 
     {% bootstrap_javascript %}
+
+    <!-- JavaScript para Aumentar e Diminuir o Tamanho do Texto -->
+    <script>
+        let tamanhoTexto = 1;  // Tamanho inicial em em (escala relativa)
+        const tamanhoMinimo = 0.8;  // Limite mínimo para o tamanho do texto
+
+        function aumentarTexto() {
+            tamanhoTexto += 0.1;  // Incrementa o tamanho da fonte em 10%
+            atualizarTamanhoTexto();
+        }
+
+        function diminuirTexto() {
+            if (tamanhoTexto > tamanhoMinimo) {
+                tamanhoTexto -= 0.1;  // Reduz o tamanho da fonte em 10%
+                atualizarTamanhoTexto();
+            }
+        }
+
+        function atualizarTamanhoTexto() {
+            document.querySelectorAll('.texto-ajustavel').forEach(function(element) {
+                element.style.fontSize = tamanhoTexto + "em";  // Aplica o novo tamanho a todos os elementos com a classe .texto-ajustavel
+            });
+        }
+    </script>
 </body>
 </html>

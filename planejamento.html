@@ -1,0 +1,77 @@
+{% load bootstrap5 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Fundo geral claro */
+        }
+        .lousa {
+            background-color: #2c3e50; /* Fundo escuro para simular a lousa */
+            color: #ecf0f1; /* Texto claro */
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card {
+            background-color: #ffffff; /* Branco nos cards */
+            border: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem; /* Aumentar fonte */
+        }
+        .card-title {
+            font-weight: bold;
+            font-size: 1.5rem; /* Destaque no título */
+            color: #2c3e50; /* Cor escura para contraste */
+        }
+        .card-text {
+            color: #555; /* Texto em tom médio para contraste */
+        }
+        .btn {
+            font-weight: bold;
+        }
+        .lousa h3 {
+            font-size: 2rem; /* Aumenta o título principal */
+            font-weight: bold;
+            color: #ecf0f1; /* Cor clara */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="lousa p-4">
+        <h3 class="text-center mb-4">📋 Programação das monitoras</h3>
+        <div class="row">
+            <!-- Loop para exibir cada agendamento em um card -->
+            {% for matricula in matriculas %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <!-- Imagem no topo do card -->
+                       
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ matricula.nome }}</h5>
+                            <p class="card-text"><strong>Data:</strong> {{ matricula.data }}</p>
+                            <!--  -->
+                            <p class="card-text"><strong>TURMA-A:  </strong>AUTO CUIDADO</p>
+                            <p class="card-text">- CUIDADOS BASICOS</p>
+                            <p class="card-text">- HIGIENE</p>
+                            <p class="card-text">- SAÚDE</p>
+                            <p class="card-text">- ALIMENTAÇÃO</p>
+                            <p class="card-text">- Monitora: Ana Camila</p>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

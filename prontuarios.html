@@ -10,6 +10,8 @@
 <body>
     <div class="container mt-5">
         <h1>Guia S.C.F.V.</h1>
+        <button class="btn btn-secondary me-2" onclick="aumentarTexto()">A+</button>
+        <button class="btn btn-secondary me-3" onclick="diminuirTexto()">A-</button>
         <!-- Navegação por abas -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -454,6 +456,30 @@
         </div>
     </div>
 
-    {% bootstrap_javascript %}  <!-- Adiciona o JavaScript do Bootstrap -->
+    {% bootstrap_javascript %}
+
+    <!-- JavaScript para Aumentar e Diminuir o Tamanho do Texto -->
+    <script>
+        let tamanhoTexto = 1;  // Tamanho inicial em em (escala relativa)
+        const tamanhoMinimo = 0.8;  // Limite mínimo para o tamanho do texto
+
+        function aumentarTexto() {
+            tamanhoTexto += 0.1;  // Incrementa o tamanho da fonte em 10%
+            atualizarTamanhoTexto();
+        }
+
+        function diminuirTexto() {
+            if (tamanhoTexto > tamanhoMinimo) {
+                tamanhoTexto -= 0.1;  // Reduz o tamanho da fonte em 10%
+                atualizarTamanhoTexto();
+            }
+        }
+
+        function atualizarTamanhoTexto() {
+            document.querySelectorAll('.texto-ajustavel').forEach(function(element) {
+                element.style.fontSize = tamanhoTexto + "em";  // Aplica o novo tamanho a todos os elementos com a classe .texto-ajustavel
+            });
+        }
+    </script>
 </body>
 </html>
